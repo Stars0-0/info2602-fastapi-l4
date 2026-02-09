@@ -6,6 +6,10 @@ class Token(SQLModel):
     access_token: str
     token_type: str
 
+class UserResponse(SQLModel):
+    id: Optional[int]
+    username:str
+    email: EmailStr
 
 class User(SQLModel, table=False):
     id: Optional[int] = Field(default=None, primary_key=True)
