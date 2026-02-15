@@ -22,10 +22,9 @@ def initialize():
         with open('todos.csv') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                new_todo = Todo(text=row['text'])  #create object
+                new_todo = Todo(text=row['text'], user_id=int(row['user_id']))  #create object
                 #update fields based on records
                 new_todo.done = True if row['done'] == 'true' else False
-                new_todo.user_id = int(row['user_id'])
                 db.add(new_todo)  #queue changes for saving
             db.commit()
 
